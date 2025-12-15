@@ -1,0 +1,274 @@
+body {
+    font-family: 'Exo 2', sans-serif; 
+    background-color: #f4f4f9;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+}
+
+.container {
+    background: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    width: 100%;
+    /* ДОБАВЛЕНО: Предотвращает горизонтальный скролл на мобильных */
+    overflow-x: hidden; 
+}
+
+h1#main-title {
+    text-align: center;
+}
+
+/* Форма */
+label {
+    display: block;
+    margin-top: 15px;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+input[type="text"],
+textarea,
+select { 
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+/* СЧЕТЧИК СИМВОЛОВ */
+#char-count {
+    display: block;
+    text-align: right;
+    margin-top: -10px;
+    margin-bottom: 10px;
+    font-size: 0.9em;
+    color: #666;
+}
+
+button {
+    background-color: #5cb85c;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 10px;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #4cae4c;
+}
+
+/* Стили для кнопки Очистить форму (Рек. 5) */
+#reset-form {
+    background-color: #f0ad4e;
+    margin-left: 10px;
+}
+#reset-form:hover {
+    background-color: #ec971f;
+}
+
+
+/* Стили для Колорпикера */
+.color-picker-input {
+    height: 40px; 
+    width: 100%;
+    padding: 0;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+    background: transparent;
+    appearance: none; 
+    -moz-appearance: none;
+    -webkit-appearance: none;
+}
+
+.color-picker-input::-webkit-color-swatch-wrapper {
+    padding: 0;
+}
+.color-picker-input::-webkit-color-swatch {
+    border: none;
+    border-radius: 5px;
+}
+.color-picker-input::-moz-color-swatch {
+    border: none;
+    border-radius: 5px;
+}
+
+/* РЕК. 4: Улучшение выбора шрифтов */
+select#font-select option[value*="Exo"] {
+    font-family: 'Exo 2', sans-serif;
+}
+select#font-select option[value*="Montserrat"] {
+    font-family: 'Montserrat', sans-serif;
+}
+select#font-select option[value*="Playfair"] {
+    font-family: 'Playfair Display', serif;
+}
+
+
+/* Открытка - Квадратный формат и стили */
+#card-preview {
+    margin-top: 30px;
+    text-align: center;
+}
+
+.postcard {
+    /* Стандартные размеры для десктопа */
+    width: 400px;
+    height: 400px; 
+    
+    margin: 20px auto;
+    border-radius: 10px;
+    background-size: cover;
+    background-position: center;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+    align-items: center; 
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s;
+    
+    /* ДОБАВЛЕНО: Важно для правильного расчета размеров */
+    box-sizing: border-box !important; 
+}
+
+/* Класс для отображения рамки в превью */
+.add-border-shadow {
+    border: 2px solid #5cb85c; 
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); 
+}
+
+.card-text-content {
+    position: relative; 
+    z-index: 2;
+    text-align: center;
+    width: 90%; 
+    padding: 10px;
+    font-family: 'Exo 2', sans-serif; 
+}
+
+/* Стили для выводимого текста */
+.recipient-name-output,
+.gratitude-text-output {
+    text-align: center !important; 
+    margin: 10px 0;
+    font-weight: bold;
+    line-height: 1.3;
+    color: #1a1a1a; 
+}
+
+.recipient-name-output {
+    font-size: 24px;
+}
+
+.gratitude-text-output {
+    font-size: 20px;
+    white-space: pre-wrap; 
+}
+
+/* СТИЛИ ДЛЯ ВЫБОРА ФОНА */
+.background-selection {
+    display: flex;
+    flex-wrap: wrap; 
+    gap: 10px;
+    margin-bottom: 20px;
+    padding-bottom: 5px; 
+}
+
+.bg-option {
+    position: relative;
+    width: 60px;
+    height: 60px;
+    border: 3px solid transparent;
+    border-radius: 5px;
+    cursor: pointer;
+    background-size: cover;
+    background-position: center;
+    transition: border-color 0.2s;
+}
+
+.bg-option.selected {
+    border-color: #5cb85c; 
+}
+
+/* ======================================================= */
+/* МОБИЛЬНАЯ АДАПТАЦИЯ (Скорректировано) */
+/* ======================================================= */
+@media (max-width: 650px) {
+    
+    .container {
+        padding: 10px; 
+        box-shadow: none; 
+        overflow-x: hidden; /* Уже добавлено выше, но пусть будет */
+    }
+
+    .postcard {
+        width: 90%; 
+        height: auto; 
+        aspect-ratio: 1 / 1; 
+        max-width: 400px;
+        margin: 20px auto;
+        
+        display: flex;
+        flex-direction: column;
+        justify-content: center; 
+        align-items: center; 
+        padding: 15px;
+        
+        /* ДОБАВЛЕНО: Гарантируем, что элемент не выходит за границы */
+        max-width: calc(100vw - 40px) !important;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .card-text-content {
+        position: relative; 
+        z-index: 2;
+        transform: none; 
+        top: auto;
+        left: auto;
+        width: 100%;
+        height: auto;
+    }
+    
+    button {
+        width: auto;
+        margin-bottom: 5px;
+    }
+    
+    #card-form button {
+        width: auto;
+    }
+    #card-form {
+        display: flex;
+        flex-wrap: wrap;
+    }
+    
+    #reset-form {
+        margin-top: 10px;
+        margin-left: 10px;
+    }
+    
+    /* Делаем кнопки на мобильном адаптивными по ширине, чтобы они были рядом */
+    #card-form button {
+        flex-grow: 1;
+        min-width: 100px; /* Чтобы не сжимались слишком сильно */
+    }
+}

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Скажи «Спасибо!» коллеге</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;700&family=Montserrat:wght@400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="style.css"> 
+</head>
+<body>
+
+    <div class="container">
+        <h1 id="main-title">✨ Скажи «Спасибо!» коллеге</h1>
+
+        <form id="card-form">
+            
+            <label for="recipient-name">Имя получателя:</label>
+            <input type="text" id="recipient-name" required placeholder="Например: Иван">
+
+            <label for="gratitude-text">Текст благодарности:</label>
+            <textarea id="gratitude-text" required placeholder="Напишите, за что вы признательны и благодарны..." maxlength="200"></textarea>
+            <small id="char-count">0/200</small>
+            
+            <label for="font-select">Шрифт открытки:</label>
+            <select id="font-select">
+                <option value="'Exo 2', sans-serif">Exo 2 (Современный)</option>
+                <option value="'Montserrat', sans-serif">Montserrat (Классический)</option>
+                <option value="'Playfair Display', serif">Playfair Display (Элегантный)</option>
+            </select>
+            
+            <label for="color-picker">Цвет шрифта:</label>
+            <input type="color" id="color-picker" value="#1a1a1a" class="color-picker-input">
+            
+            <label>Выбор шаблона фона:</label>
+            <div id="background-selection" class="background-selection">
+                </div>
+
+            <button type="submit">Сгенерировать Открытку</button>
+            <button type="button" id="reset-form">Очистить форму</button> 
+        </form>
+
+        <div id="card-preview">
+            <h2>Предварительный просмотр</h2>
+            
+            <div id="card-output" class="postcard">
+                <div class="card-text-content">
+                    <p id="output-name" class="recipient-name-output">Имя</p> 
+                    <p id="output-text" class="gratitude-text-output">Текст благодарности</p>
+                </div>
+            </div>
+            
+            <button id="download-button" style="display: none;">Скачать открытку</button>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
