@@ -34,18 +34,27 @@ label {
     font-weight: bold;
     /* ФИНАЛЬНОЕ ИСПРАВЛЕНИЕ: Принудительное выравнивание текста заголовков по левому краю */
     text-align: left !important; 
+    
+    /* НОВОЕ ИСПРАВЛЕНИЕ: Принудительно выравниваем сам элемент label как flex-элемент */
+    align-self: flex-start; 
 }
 
+/* Применяем align-self: flex-start ко всем полям ввода/выбора, которые могут быть дочерними элементами flex */
 input[type="text"],
 textarea,
-select { 
+select,
+.color-picker-input,
+#background-selection { 
     width: 100%;
     padding: 10px;
     margin-bottom: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
     box-sizing: border-box;
-    text-align: left; 
+    text-align: left;
+    
+    /* НОВОЕ ИСПРАВЛЕНИЕ: Принудительно выравниваем поля ввода как flex-элементы */
+    align-self: flex-start;
 }
 
 textarea {
@@ -61,6 +70,8 @@ textarea {
     margin-bottom: 10px;
     font-size: 0.9em;
     color: #666;
+    align-self: flex-end; /* Счетчик должен быть справа */
+    width: 100%;
 }
 
 button {
@@ -92,7 +103,6 @@ button:hover {
 /* Стили для Колорпикера */
 .color-picker-input {
     height: 40px; 
-    width: 100%;
     padding: 0;
     margin-bottom: 20px;
     border: 1px solid #ccc;
@@ -103,6 +113,7 @@ button:hover {
     -moz-appearance: none;
     -webkit-appearance: none;
 }
+/* Удален width: 100% из-за того, что он уже добавлен выше */
 
 .color-picker-input::-webkit-color-swatch-wrapper {
     padding: 0;
@@ -264,6 +275,8 @@ select#font-select option[value*="Playfair"] {
     #card-form {
         display: flex;
         flex-wrap: wrap;
+        /* Убедимся, что flex-items начинаются слева */
+        justify-content: flex-start; 
     }
     
     #reset-form {
