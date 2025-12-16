@@ -21,6 +21,11 @@ h1#main-title {
     text-align: center;
 }
 
+/* ИСПРАВЛЕНИЕ: Добавляем явное выравнивание для контейнера формы */
+#card-form {
+    text-align: left; 
+}
+
 /* Форма */
 label {
     display: block;
@@ -30,8 +35,6 @@ label {
     text-align: left; /* Гарантируем, что все заголовки выровнены по левому краю */
 }
 
-/* ИСПРАВЛЕНИЕ: Добавлено text-align: left для всех полей ввода, включая select, 
-   чтобы унифицировать отображение на мобильных устройствах. */
 input[type="text"],
 textarea,
 select { 
@@ -260,6 +263,7 @@ select#font-select option[value*="Playfair"] {
     #card-form {
         display: flex;
         flex-wrap: wrap;
+        /* Сохраняем flex-свойства для мобильных, но text-align: left уже установлен выше */
     }
     
     #reset-form {
