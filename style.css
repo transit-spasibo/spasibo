@@ -14,7 +14,6 @@ body {
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     max-width: 600px;
     width: 100%;
-    /* ДОБАВЛЕНО: Предотвращает горизонтальный скролл на мобильных */
     overflow-x: hidden; 
 }
 
@@ -28,8 +27,11 @@ label {
     margin-top: 15px;
     margin-bottom: 5px;
     font-weight: bold;
+    text-align: left; /* Гарантируем, что все заголовки выровнены по левому краю */
 }
 
+/* ИСПРАВЛЕНИЕ: Добавлено text-align: left для всех полей ввода, включая select, 
+   чтобы унифицировать отображение на мобильных устройствах. */
 input[type="text"],
 textarea,
 select { 
@@ -39,6 +41,7 @@ select {
     border: 1px solid #ccc;
     border-radius: 5px;
     box-sizing: border-box;
+    text-align: left; 
 }
 
 textarea {
@@ -145,7 +148,6 @@ select#font-select option[value*="Playfair"] {
     overflow: hidden;
     transition: all 0.3s;
     
-    /* ДОБАВЛЕНО: Важно для правильного расчета размеров */
     box-sizing: border-box !important; 
 }
 
@@ -209,14 +211,14 @@ select#font-select option[value*="Playfair"] {
 }
 
 /* ======================================================= */
-/* МОБИЛЬНАЯ АДАПТАЦИЯ (Скорректировано) */
+/* МОБИЛЬНАЯ АДАПТАЦИЯ */
 /* ======================================================= */
 @media (max-width: 650px) {
     
     .container {
         padding: 10px; 
         box-shadow: none; 
-        overflow-x: hidden; /* Уже добавлено выше, но пусть будет */
+        overflow-x: hidden; 
     }
 
     .postcard {
@@ -232,7 +234,6 @@ select#font-select option[value*="Playfair"] {
         align-items: center; 
         padding: 15px;
         
-        /* ДОБАВЛЕНО: Гарантируем, что элемент не выходит за границы */
         max-width: calc(100vw - 40px) !important;
         margin-left: auto;
         margin-right: auto;
