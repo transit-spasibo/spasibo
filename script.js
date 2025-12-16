@@ -23,18 +23,21 @@ document.addEventListener('DOMContentLoaded', () => {
     let selectedBackground = ''; 
 
     // Константы для размеров
-    const FINAL_SIZE = 1800;  // Целевой размер открытки (1800x1800 px)
+    // ИСПРАВЛЕНИЕ: Уменьшен размер до 1200x1200 пикселей для скачивания
+    const FINAL_SIZE = 1200;  // Целевой размер открытки (1200x1200 px)
     const DESKTOP_PREVIEW_SIZE = 400; // Базовый размер для расчета масштаба
-    const FINAL_PADDING = FINAL_SIZE * 0.05; // 5% от размера для отступов
+    // ИСПРАВЛЕНИЕ: Пересчитан паддинг: 1200 * 0.05 = 60px
+    const FINAL_PADDING = FINAL_SIZE * 0.05; 
 
     // БАЗОВЫЕ РАЗМЕРЫ ШРИФТА (из CSS)
     const FONT_SIZE_NAME = 24;
     const FONT_SIZE_TEXT = 20;
 
     const backgroundImages = [
-        { id: 'bg1', url: 'backgrounds/bg1.png' }, 
+        { id: 'bg1', url: 'backgrounds/bg1.jpg' }, 
         { id: 'bg2', url: 'backgrounds/bg2.png' }, 
-        { id: 'bg3', url: 'backgrounds/bg3.png' }
+        { id: 'bg3', url: 'backgrounds/bg3.jpg' },
+        { id: 'bg4', url: 'backgrounds/bg4.jpg' } 
     ];
     
     const textElements = [outputName, outputText];
@@ -65,6 +68,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // =======================================================
     // РЕК. 3: Счетчик символов
     // =======================================================
+    // Логика использует gratitudeTextarea.maxLength, которое равно 200
     gratitudeTextarea.addEventListener('input', () => {
         charCount.textContent = `${gratitudeTextarea.value.length}/${gratitudeTextarea.maxLength}`;
     });
@@ -172,12 +176,12 @@ document.addEventListener('DOMContentLoaded', () => {
             firstOption.click(); 
         }
         
-        // Сброс счетчика
+        // Сброс счетчика (использует maxLength)
         charCount.textContent = `${gratitudeTextarea.value.length}/${gratitudeTextarea.maxLength}`;
     });
 
     // =======================================================
-    // ЛОГИКА СКАЧИВАНИЯ (Исправлено центрирование и обрезание)
+    // ЛОГИКА СКАЧИВАНИЯ
     // =======================================================
     downloadButton.addEventListener('click', () => {
         // РЕК. 2: Индикатор загрузки
@@ -228,7 +232,7 @@ document.addEventListener('DOMContentLoaded', () => {
             text-align: center;
             padding: ${FINAL_PADDING}px; 
             box-sizing: border-box; 
-            display: flex; /* Чтобы текст внутри центрировался вертикально */
+            display: flex; 
             flex-direction: column;
             justify-content: center;
             align-items: center;
@@ -302,9 +306,8 @@ document.addEventListener('DOMContentLoaded', () => {
         el.style.color = colorPicker.value;
     });
     
-    // Инициализация счетчика
+    // Инициализация счетчика (использует maxLength)
     charCount.textContent = `${gratitudeTextarea.value.length}/${gratitudeTextarea.maxLength}`;
     
     downloadButton.style.display = 'none';
 });
-
